@@ -95,7 +95,7 @@ ext.gleanDocsDirectory = "$rootDir/docs"
 android {
     compileSdkVersion build_versions.target_sdk
     defaultConfig {
-        applicationId "com.igalia.wolvic"
+        applicationId "co.aptero.wolvic"
         minSdkVersion build_versions.min_sdk
         targetSdkVersion build_versions.target_sdk
         versionCode 46

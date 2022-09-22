@@ -63,7 +63,8 @@
             android:layout_gravity="center_vertical"
             android:layout_marginStart="10dp"
             android:layout_weight="100"
-            android:orientation="horizontal"/>
+            android:orientation="horizontal"
+            android:visibility="invisible" />
 
         <RelativeLayout
             android:layout_width="40dp"
@@ -73,20 +74,24 @@
             android:scaleType="fitCenter"
             android:layout_gravity="center_vertical"
             app:visibleGone="@{settingsmodel.isWhatsNewVisible &amp;&amp; viewmodel.width > 640}">
+
             <com.igalia.wolvic.ui.views.UIButton
                 android:id="@+id/whatsNew"
                 style="?attr/navigationBarButtonStyle"
                 android:src="@drawable/ic_whats_new"
                 android:tooltipText="@string/whats_new_tooltip"
-                app:privateMode="@{viewmodel.isPrivateSession}"/>
+                android:visibility="invisible"
+                app:privateMode="@{viewmodel.isPrivateSession}" />
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="6dp"
                 android:layout_height="6dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginRight="10dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:background="@drawable/downloads_badge"/>
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/downloads_badge"
+                android:visibility="invisible" />
         </RelativeLayout>
 
         <com.igalia.wolvic.ui.views.UIButton
@@ -96,6 +101,7 @@
             android:layout_weight="1"
             android:src="@drawable/ic_icon_hamburger_menu"
             android:tooltipText="@string/hamburger_menu_tooltip"
-            app:privateMode="@{viewmodel.isPrivateSession}"/>
+            android:visibility="invisible"
+            app:privateMode="@{viewmodel.isPrivateSession}" />
     </LinearLayout>
 </layout>

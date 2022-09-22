@@ -1267,14 +1267,14 @@ public class VRBrowserActivity extends PlatformActivity implements WidgetManager
     @Keep
     @SuppressWarnings("unused")
     private void haltActivity(final int aReason) {
-        runOnUiThread(() -> {
+        /*runOnUiThread(() -> {
             if (mConnectionAvailable && mWindows.getFocusedWindow() != null) {
                 mWindows.getFocusedWindow().showAlert(
                         getString(R.string.not_entitled_title),
                         getString(R.string.not_entitled_message, getString(R.string.app_name)),
                         (index, isChecked) -> finish());
             }
-        });
+        });*/
     }
 
     @Keep

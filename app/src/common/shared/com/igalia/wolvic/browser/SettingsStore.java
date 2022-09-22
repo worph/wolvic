@@ -688,7 +688,7 @@ public class SettingsStore {
     }
 
     public boolean isWhatsNewDisplayed() {
-        return mPrefs.getBoolean(mContext.getString(R.string.settings_key_whats_new_displayed), WHATS_NEW_DISPLAYED);
+        return mPrefs.getBoolean(mContext.getString(R.string.settings_key_whats_new_displayed), true);
     }
 
     public void setFxALastSync(@NonNull String email, long timestamp) {
@@ -900,7 +900,7 @@ public class SettingsStore {
     }
 
     public boolean isTermsServiceAccepted() {
-        return mPrefs.getBoolean(mContext.getString(R.string.settings_key_terms_service_accepted), false);
+        return mPrefs.getBoolean(mContext.getString(R.string.settings_key_terms_service_accepted), true);
     }
 
     public void setPrivacyPolicyAccepted(boolean isAccepted) {
@@ -910,7 +910,7 @@ public class SettingsStore {
     }
 
     public boolean isPrivacyPolicyAccepted() {
-        return mPrefs.getBoolean(mContext.getString(R.string.settings_key_privacy_policy_accepted), false);
+        return mPrefs.getBoolean(mContext.getString(R.string.settings_key_privacy_policy_accepted), true);
     }
 
 }
