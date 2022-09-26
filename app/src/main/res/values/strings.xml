@@ -390,6 +390,12 @@
     the keyboard languages panel list. -->
     <string name="settings_language_thai">Thai</string>
 
+    <!-- This string is used to label a radio button in the 'Settings' Voice Search and the Display Language dialogs that, when pressed,
+    changes the app and the language of the speech-recognition-based search to 'Portuguese (Brazil)'.
+    The string is also used in the keyboard space bar to show the current keyboard language and in
+    the keyboard languages panel list. -->
+    <string name="settings_language_portuguese_br">Portuguese (Brazil)</string>
+
     <!-- This string is used to label a button in the 'Settings' dialog window that, when pressed,
         opens a dialog box that contains display-related settings: window size, pixel density, etc. -->
     <string name="settings_display">Display</string>
@@ -1347,6 +1353,16 @@
          the more button is pressed in a downloads item. It deletes the selected item from the downloads list
          and also from disk. -->
     <string name="download_context_delete">Delete</string>
+
+    <!-- This string is displayed as the title of the System Notifications List, which contains
+         the notifications received by the system (similar to Android's Notification Center). -->
+    <string name="notifications_title">Notifications</string>
+
+    <!-- This string is displayed in the System Notifications List when the list is empty. -->
+    <string name="notifications_empty">Your Notifications List is Empty</string>
+
+    <!-- This string is displayed in the System Notifications List while it is being loaded. -->
+    <string name="notifications_loading">Loading Notifications</string>
 
     <!-- This string labels the Reset button that restores the default display settings values. -->
     <string name="display_options_reset">Reset Display Settings</string>

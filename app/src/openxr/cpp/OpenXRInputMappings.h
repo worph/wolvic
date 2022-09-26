@@ -33,6 +33,7 @@ namespace crow {
     constexpr const char* kPathTrackpad { "input/trackpad" };
     constexpr const char* kPathSelect { "/input/select" };
     constexpr const char* kPathMenu { "input/menu" };
+    constexpr const char* kPathHaptic { "output/haptic" };
     constexpr const char* kPathButtonA { "input/a" };
     constexpr const char* kPathButtonB { "input/b" };
     constexpr const char* kPathButtonX { "input/x" };
@@ -106,6 +107,11 @@ namespace crow {
         OpenXRHandFlags hand;
     };
 
+    struct OpenXRHaptic {
+        OpenXRButtonPath path;
+        OpenXRHandFlags hand;
+    };
+
     struct OpenXRInputMapping {
         const char* const path { nullptr };
         const char* const systemFilter {nullptr };
@@ -115,6 +121,7 @@ namespace crow {
         std::vector<OpenXRInputProfile> profiles;
         std::vector<OpenXRButton> buttons;
         std::vector<OpenXRAxis> axes;
+        std::vector<OpenXRHaptic> haptics;
     };
 
     /*
@@ -142,7 +149,10 @@ namespace crow {
         },
         std::vector<OpenXRAxis> {
             { OpenXRAxisType::Thumbstick, kPathThumbstick,  OpenXRHandFlags::Both },
-        }
+        },
+        std::vector<OpenXRHaptic> {
+            { kPathHaptic, OpenXRHandFlags::Right },
+        },
     };
 
     // Oculus Touch v3:  https://github.com/immersive-web/webxr-input-profiles/blob/master/packages/registry/profiles/oculus/oculus-touch-v3.json
@@ -157,16 +167,19 @@ namespace crow {
                     { OpenXRButtonType::Trigger, kPathTrigger, OpenXRButtonFlags::ValueTouch, OpenXRHandFlags::Both },
                     { OpenXRButtonType::Squeeze, kPathSqueeze, OpenXRButtonFlags::Value, OpenXRHandFlags::Both },
                     { OpenXRButtonType::Thumbstick, kPathThumbstick, OpenXRButtonFlags::ClickTouch, OpenXRHandFlags::Both },
-                    { OpenXRButtonType::ButtonA, kPathButtonX, OpenXRButtonFlags::ClickTouch, OpenXRHandFlags::Left },
-                    { OpenXRButtonType::ButtonB, kPathButtonY, OpenXRButtonFlags::ClickTouch, OpenXRHandFlags::Left,  },
-                    { OpenXRButtonType::ButtonX, kPathButtonA, OpenXRButtonFlags::ClickTouch, OpenXRHandFlags::Right },
-                    { OpenXRButtonType::ButtonY, kPathButtonB, OpenXRButtonFlags::ClickTouch, OpenXRHandFlags::Right },
+                    { OpenXRButtonType::ButtonX, kPathButtonX, OpenXRButtonFlags::ClickTouch, OpenXRHandFlags::Left },
+                    { OpenXRButtonType::ButtonY, kPathButtonY, OpenXRButtonFlags::ClickTouch, OpenXRHandFlags::Left,  },
+                    { OpenXRButtonType::ButtonA, kPathButtonA, OpenXRButtonFlags::ClickTouch, OpenXRHandFlags::Right },
+                    { OpenXRButtonType::ButtonB, kPathButtonB, OpenXRButtonFlags::ClickTouch, OpenXRHandFlags::Right },
                     { OpenXRButtonType::Thumbrest, kPathThumbrest, OpenXRButtonFlags::Touch, OpenXRHandFlags::Both },
                     { OpenXRButtonType::Menu, kPathMenu, OpenXRButtonFlags::Click, OpenXRHandFlags::Left, ControllerDelegate::Button::BUTTON_APP, true }
             },
             std::vector<OpenXRAxis> {
                     { OpenXRAxisType::Thumbstick, kPathThumbstick,  OpenXRHandFlags::Both },
-            }
+            },
+            std::vector<OpenXRHaptic> {
+                    { kPathHaptic, OpenXRHandFlags::Both },
+            },
     };
     
     // HVR 3DOF: https://github.com/immersive-web/webxr-input-profiles/blob/master/packages/registry/profiles/generic/generic-trigger-touchpad.json
@@ -184,7 +197,10 @@ namespace crow {
             },
             std::vector<OpenXRAxis> {
                 { OpenXRAxisType::Trackpad, "input/trackpad/value",  OpenXRHandFlags::Both },
-            }
+            },
+            std::vector<OpenXRHaptic> {
+                { kPathHaptic, OpenXRHandFlags::Both },
+            },
     };
 
   const OpenXRInputMapping Hvr6DOF {
@@ -210,7 +226,10 @@ namespace crow {
       },
       std::vector<OpenXRAxis> {
           { OpenXRAxisType::Thumbstick, kPathThumbstick,  OpenXRHandFlags::Both },
-      }
+      },
+      std::vector<OpenXRHaptic> {
+          { kPathHaptic, OpenXRHandFlags::Both },
+      },
   };
 
     // Default fallback: https://github.com/immersive-web/webxr-input-profiles/blob/master/packages/registry/profiles/generic/generic-button.json
@@ -224,7 +243,10 @@ namespace crow {
             std::vector<OpenXRButton> {
                     { OpenXRButtonType::Trigger, kPathTrigger, OpenXRButtonFlags::Click, OpenXRHandFlags::Both },
             },
-            {}
+            {},
+            std::vector<OpenXRHaptic> {
+                    { kPathHaptic, OpenXRHandFlags::Both },
+            },
     };
 
 #if defined(HVR_6DOF)

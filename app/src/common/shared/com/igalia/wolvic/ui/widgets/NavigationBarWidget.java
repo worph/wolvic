@@ -643,6 +643,17 @@ public class NavigationBarWidget extends UIWidget implements WSession.Navigation
     }
 
     @Override
+    public void onKioskMode(WindowWidget aWindow, boolean isKioskMode) {
+        if (isKioskMode) {
+            mTrayViewModel.setShouldBeVisible(false);
+            hide(KEEP_WIDGET);
+        } else {
+            mTrayViewModel.setShouldBeVisible(true);
+            show(KEEP_FOCUS);
+        }
+    }
+
+    @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
     }
@@ -710,7 +721,8 @@ public class NavigationBarWidget extends UIWidget implements WSession.Navigation
 
         mWidgetManager.popWorldBrightness(this);
         AnimationHelper.fadeOut(mBinding.navigationBarFullscreen.fullScreenModeContainer, 0, null);
-        mTrayViewModel.setShouldBeVisible(true);
+        // if we are in kiosk mode, don't show the tray
+        mTrayViewModel.setShouldBeVisible(!mAttachedWindow.isKioskMode());
         closeFloatingMenus();
         mWidgetManager.popWorldBrightness(mBrightnessWidget);
     }
